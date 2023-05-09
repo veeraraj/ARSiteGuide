@@ -21,6 +21,7 @@
 		6778A4A32A0A441F00D73CAF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6778A4A22A0A441F00D73CAF /* LoginView.swift */; };
 		B62C69FD2A0A4683008EB196 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C69FC2A0A4683008EB196 /* ARViewController.swift */; };
 		B62C6A012A0A4708008EB196 /* WrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C6A002A0A4708008EB196 /* WrapperView.swift */; };
+		B62C6A032A0A831E008EB196 /* 3DAssets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B62C6A022A0A831E008EB196 /* 3DAssets.scnassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		720A400FC43EEA61A39CA03B /* Pods_ARSiteGuide_ARSiteGuideUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARSiteGuide_ARSiteGuideUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62C69FC2A0A4683008EB196 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		B62C6A002A0A4708008EB196 /* WrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperView.swift; sourceTree = "<group>"; };
+		B62C6A022A0A831E008EB196 /* 3DAssets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = 3DAssets.scnassets; sourceTree = "<group>"; };
 		D3702AB2593786E8995165BB /* Pods-ARSiteGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSiteGuide.debug.xcconfig"; path = "Target Support Files/Pods-ARSiteGuide/Pods-ARSiteGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		E5F5B179C77CC06FF863C54A /* Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig"; path = "Target Support Files/Pods-ARSiteGuide-ARSiteGuideUITests/Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F8E8E9E48D212A23D76E7D2F /* Pods_ARSiteGuideTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARSiteGuideTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 		6778A4742A0A415D00D73CAF /* ARSiteGuide */ = {
 			isa = PBXGroup;
 			children = (
+				B62C6A022A0A831E008EB196 /* 3DAssets.scnassets */,
 				6778A4A42A0A481F00D73CAF /* Splash */,
 				6778A4A12A0A43FA00D73CAF /* Home */,
 				6778A4A02A0A43F200D73CAF /* Login */,
@@ -192,7 +195,6 @@
 				6D1F28D4FBA724DD731E42EB /* Pods-ARSiteGuideTests.debug.xcconfig */,
 				4666494B80284640CD19B7BE /* Pods-ARSiteGuideTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -316,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6778A47E2A0A415F00D73CAF /* Preview Assets.xcassets in Resources */,
+				B62C6A032A0A831E008EB196 /* 3DAssets.scnassets in Resources */,
 				6778A47A2A0A415E00D73CAF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,8 +608,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ARSiteGuide/Preview Content\"";
+				DEVELOPMENT_TEAM = 748NN37F9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use your camera to guide you how to use different machinery";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -625,7 +630,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ARSiteGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -642,8 +649,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ARSiteGuide/Preview Content\"";
+				DEVELOPMENT_TEAM = 748NN37F9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use your camera to guide you how to use different machinery";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -662,7 +671,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ARSiteGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

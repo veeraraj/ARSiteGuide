@@ -100,14 +100,14 @@
 		7DB363160C15E99ECF5A266ABA564213 /* PositionAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PositionAttribute.swift; path = EasyPeasy/PositionAttribute.swift; sourceTree = "<group>"; };
 		80A59FDEFA17E68B173D17EFCD386FEF /* Pods-ARSiteGuide-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARSiteGuide-Info.plist"; sourceTree = "<group>"; };
 		82F1AF11C1DF54D449F354D5A8189C4A /* Constant.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = EasyPeasy/Constant.swift; sourceTree = "<group>"; };
-		8328E6FCAC1E4D4E635FEAE69D63A19E /* EasyPeasy */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EasyPeasy; path = EasyPeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8328E6FCAC1E4D4E635FEAE69D63A19E /* EasyPeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyPeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8830E7A853D7A70C322C37F675F89166 /* EasyPeasy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EasyPeasy.release.xcconfig; sourceTree = "<group>"; };
 		8B5BB82D73622200A6CA780B42AD1080 /* Pods-ARSiteGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARSiteGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		94CBE4503D7E3EF4A51B8B2F37ABE834 /* Pods-ARSiteGuideTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARSiteGuideTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AD1ED210841D511AA1B4B279BF1558D /* Pods-ARSiteGuideTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARSiteGuideTests-Info.plist"; sourceTree = "<group>"; };
 		9B1A69AC9E6886DCD694C006B1C67E56 /* Node.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Node.swift; path = EasyPeasy/Node.swift; sourceTree = "<group>"; };
 		9D0B7D7753CD579A1CA58A2A961576A8 /* EasyPeasy-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyPeasy-umbrella.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F769FEF4335A93DF43A9651B0FA235C /* Pods-ARSiteGuide-ARSiteGuideUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ARSiteGuide-ARSiteGuideUITests-umbrella.h"; sourceTree = "<group>"; };
 		A8066598D9A535FC6C9339C82CE21B4D /* Pods-ARSiteGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARSiteGuide.release.xcconfig"; sourceTree = "<group>"; };
 		B2020E42F271B359DFFE4933B7D69EA4 /* Pods-ARSiteGuide-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ARSiteGuide-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		0E258F3A4B25A2C8F2BD718664B7F521 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8328E6FCAC1E4D4E635FEAE69D63A19E /* EasyPeasy */,
+				8328E6FCAC1E4D4E635FEAE69D63A19E /* EasyPeasy.framework */,
 				38EC6CBF7DE139C536BB4CB875A245CB /* Pods-ARSiteGuide */,
 				26D3DCB9ED46DEB8187E86668E15DD6E /* Pods-ARSiteGuide-ARSiteGuideUITests */,
 				E0D351044F8361A347436D9049EE88D4 /* Pods-ARSiteGuideTests */,
@@ -265,7 +265,6 @@
 				3D72155BE2610535EECC0A2CA05E5EC2 /* UIView+Easy.swift */,
 				8C57EBABC93ACD608B02B44C4DA88FEA /* Support Files */,
 			);
-			name = EasyPeasy;
 			path = EasyPeasy;
 			sourceTree = "<group>";
 		};
@@ -391,7 +390,7 @@
 			);
 			name = EasyPeasy;
 			productName = EasyPeasy;
-			productReference = 8328E6FCAC1E4D4E635FEAE69D63A19E /* EasyPeasy */;
+			productReference = 8328E6FCAC1E4D4E635FEAE69D63A19E /* EasyPeasy.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8DA5C7521FA024A33DA3377846203010 /* Pods-ARSiteGuideTests */ = {
@@ -866,7 +865,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/EasyPeasy/EasyPeasy-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/EasyPeasy/EasyPeasy-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -900,7 +899,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/EasyPeasy/EasyPeasy-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/EasyPeasy/EasyPeasy-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
