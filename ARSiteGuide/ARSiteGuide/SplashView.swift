@@ -14,7 +14,7 @@ struct SplashView: View {
     var body: some View {
         VStack {
             if isSplashDone {
-                LoginView()
+                LoginView(viewModel: LoginViewModel())
             } else {
                 Image("WKLogo")
                     .resizable()

@@ -9,8 +9,12 @@ import SwiftUI
 
 struct LoginView: View {
 
+    @ObservedObject var viewModel: LoginViewModel
     @State private var name: String = ""
     @State private var password: String = ""
+    @State private var isValidUser: Bool = false
+    @State private var showAlert = false
+    @State private var user: User?
 
     var shouldDisableSignIn: Bool {
         [name, password].contains(where: \.isEmpty)
@@ -51,24 +55,34 @@ struct LoginView: View {
                 .padding(.horizontal)
 
                 Spacer()
-                NavigationLink(destination: HomeView()) {
-                    Text("Sign In")
-                        .font(.title2)
-                        .bold()
-                        .foregroundColor(.white)
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .background(
-                            shouldDisableSignIn ?
-                            RadialGradient(colors: [.gray], center: .center, startRadius: 0, endRadius: 100) :
-                                RadialGradient( colors: [.red, .green, .blue], center: .center, startRadius: 0, endRadius: 100)
-                        )
-                        .cornerRadius(20)
-                        .disabled(shouldDisableSignIn)
-                        .padding()
+
+                NavigationLink(destination: HomeView(user: user), isActive: $isValidUser) {
+                    Button(action: {
+                        let user = viewModel.userDetails(userName: name, password: password)
+                        self.isValidUser = user.isValidUser
+                        self.showAlert = !user.isValidUser
+                        self.user = user.userDetails
+                    }) {
+                        Text("Sign In")
+                            .font(.title2)
+                            .bold()
+                            .foregroundColor(.white)
+                            .frame(height: 50)
+                            .frame(maxWidth: .infinity)
+                            .background(
+                                shouldDisableSignIn ?
+                                RadialGradient(colors: [.gray], center: .center, startRadius: 0, endRadius: 100) :
+                                    RadialGradient( colors: [.red, .green, .blue], center: .center, startRadius: 0, endRadius: 100)
+                            )
+                            .cornerRadius(20)
+                            .disabled(shouldDisableSignIn)
+                            .padding()
+                    }
 
                 }
-                .disabled(shouldDisableSignIn)
+                .alert("Invalid Username or Password", isPresented: $showAlert) {
+                    Button("OK", role: .cancel) { }
+                }
             }
         }
     }
@@ -76,6 +90,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(viewModel: LoginViewModel())
     }
 }

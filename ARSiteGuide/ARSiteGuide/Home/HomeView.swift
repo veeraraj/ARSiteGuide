@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
+    var user: User?
+
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    NavigationLink(destination: LoginView()) { Text(" Site 1").padding().background(Color.green)
-                    }
-                    NavigationLink(destination: LoginView()) { Text(" Site 2").padding().background(Color.green)
-                    }
-                    NavigationLink(destination: LoginView()) { Text(" Site 3").padding().background(Color.green)
+                List(user?.taskList ?? [], id: \.self) { task in
+                    NavigationLink(destination: LoginView(viewModel: LoginViewModel())) { Text(task).padding()
                     }
                 }
             }
@@ -26,6 +24,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(user: User.user1)
     }
 }
