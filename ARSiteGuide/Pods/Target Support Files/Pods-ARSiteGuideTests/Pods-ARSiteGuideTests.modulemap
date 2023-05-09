@@ -1,0 +1,6 @@
+framework module Pods_ARSiteGuideTests {
+  umbrella header "Pods-ARSiteGuideTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
