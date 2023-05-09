@@ -14,6 +14,8 @@
 		6778A4882A0A415F00D73CAF /* ARSiteGuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6778A4872A0A415F00D73CAF /* ARSiteGuideTests.swift */; };
 		6778A4922A0A415F00D73CAF /* ARSiteGuideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6778A4912A0A415F00D73CAF /* ARSiteGuideUITests.swift */; };
 		6778A4942A0A415F00D73CAF /* ARSiteGuideUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6778A4932A0A415F00D73CAF /* ARSiteGuideUITestsLaunchTests.swift */; };
+		B62C69FD2A0A4683008EB196 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C69FC2A0A4683008EB196 /* ARViewController.swift */; };
+		B62C6A012A0A4708008EB196 /* WrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C6A002A0A4708008EB196 /* WrapperView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		6778A48D2A0A415F00D73CAF /* ARSiteGuideUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARSiteGuideUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6778A4912A0A415F00D73CAF /* ARSiteGuideUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSiteGuideUITests.swift; sourceTree = "<group>"; };
 		6778A4932A0A415F00D73CAF /* ARSiteGuideUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSiteGuideUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B62C69FC2A0A4683008EB196 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		B62C6A002A0A4708008EB196 /* WrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				6778A4792A0A415E00D73CAF /* Assets.xcassets */,
 				6778A47B2A0A415E00D73CAF /* ARSiteGuide.entitlements */,
 				6778A47C2A0A415F00D73CAF /* Preview Content */,
+				B62C69FC2A0A4683008EB196 /* ARViewController.swift */,
+				B62C6A002A0A4708008EB196 /* WrapperView.swift */,
 			);
 			path = ARSiteGuide;
 			sourceTree = "<group>";
@@ -259,7 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B62C69FD2A0A4683008EB196 /* ARViewController.swift in Sources */,
 				6778A4782A0A415D00D73CAF /* ContentView.swift in Sources */,
+				B62C6A012A0A4708008EB196 /* WrapperView.swift in Sources */,
 				6778A4762A0A415D00D73CAF /* ARSiteGuideApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
