@@ -5,6 +5,9 @@
   },
   "resources" : [
     {
+      "filename" : "BlueTank.arobject"
+    },
+    {
       "filename" : "RedPipe.arobject"
     }
   ]

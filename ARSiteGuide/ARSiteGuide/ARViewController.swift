@@ -52,13 +52,13 @@ extension ARViewController: ARSCNViewDelegate {
         let planeNode = SCNNode(geometry: plane)
         planeNode.eulerAngles.x = -.pi / 15
 
-        guard let retroTVScene = SCNScene(named: "3DAssets.scnassets/retroTV.scn"),
-              let retroTVNode = retroTVScene.rootNode.childNodes.first else {
+        guard let node = getNode(for: objectAnchor) else {
+            print("failed to get node for anchor \(objectAnchor.name ?? "unknown")")
             return nil
         }
 
-        retroTVNode.position = SCNVector3Zero
-        planeNode.addChildNode(retroTVNode)
+        node.position = SCNVector3Zero
+        planeNode.addChildNode(node)
         node.addChildNode(planeNode)
 
         return node
@@ -71,6 +71,28 @@ private extension ARViewController {
         view.addSubview(sceneView)
 
         sceneView.easy.layout(Edges())
+    }
+}
+
+// MARK: Private helper methods
+private extension ARViewController {
+    func getNode(for anchor: ARObjectAnchor) -> SCNNode? {
+        guard let asset = getAsset(for: anchor),
+              let scene = SCNScene(asset: asset) else {
+            return nil
+        }
+        return scene.rootNode.childNodes.first
+    }
+
+    func getAsset(for anchor: ARObjectAnchor) -> Asset3D? {
+        switch anchor.name {
+        case "RedPipe":
+            return .retroTV
+        case "BlueTank":
+            return .wheelBarrow
+        default:
+            return nil
+        }
     }
 }
 

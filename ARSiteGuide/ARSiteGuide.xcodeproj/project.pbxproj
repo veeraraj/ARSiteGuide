@@ -22,6 +22,10 @@
 		B62C69FD2A0A4683008EB196 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C69FC2A0A4683008EB196 /* ARViewController.swift */; };
 		B62C6A012A0A4708008EB196 /* WrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C6A002A0A4708008EB196 /* WrapperView.swift */; };
 		B62C6A032A0A831E008EB196 /* 3DAssets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B62C6A022A0A831E008EB196 /* 3DAssets.scnassets */; };
+		B6343FF52A0A90E3002E2EC6 /* SCNScene+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6343FF42A0A90E3002E2EC6 /* SCNScene+Extension.swift */; };
+		B6343FF82A0A943F002E2EC6 /* wheelBarrow.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B6343FF72A0A943F002E2EC6 /* wheelBarrow.usdz */; };
+		B6343FFC2A0A95FF002E2EC6 /* retroTV.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B6343FFB2A0A95FF002E2EC6 /* retroTV.usdz */; };
+		B6343FFF2A0A9660002E2EC6 /* Asset3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6343FFE2A0A9660002E2EC6 /* Asset3D.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,10 @@
 		B62C69FC2A0A4683008EB196 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		B62C6A002A0A4708008EB196 /* WrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperView.swift; sourceTree = "<group>"; };
 		B62C6A022A0A831E008EB196 /* 3DAssets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = 3DAssets.scnassets; sourceTree = "<group>"; };
+		B6343FF42A0A90E3002E2EC6 /* SCNScene+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNScene+Extension.swift"; sourceTree = "<group>"; };
+		B6343FF72A0A943F002E2EC6 /* wheelBarrow.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = wheelBarrow.usdz; sourceTree = "<group>"; };
+		B6343FFB2A0A95FF002E2EC6 /* retroTV.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = retroTV.usdz; sourceTree = "<group>"; };
+		B6343FFE2A0A9660002E2EC6 /* Asset3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset3D.swift; sourceTree = "<group>"; };
 		D3702AB2593786E8995165BB /* Pods-ARSiteGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSiteGuide.debug.xcconfig"; path = "Target Support Files/Pods-ARSiteGuide/Pods-ARSiteGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		E5F5B179C77CC06FF863C54A /* Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig"; path = "Target Support Files/Pods-ARSiteGuide-ARSiteGuideUITests/Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F8E8E9E48D212A23D76E7D2F /* Pods_ARSiteGuideTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARSiteGuideTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +130,9 @@
 		6778A4742A0A415D00D73CAF /* ARSiteGuide */ = {
 			isa = PBXGroup;
 			children = (
+				B6343FFD2A0A9640002E2EC6 /* Models */,
+				B6343FF62A0A9420002E2EC6 /* 3D Models */,
+				B6343FF32A0A90D4002E2EC6 /* Extensions */,
 				B62C6A022A0A831E008EB196 /* 3DAssets.scnassets */,
 				6778A4A42A0A481F00D73CAF /* Splash */,
 				6778A4A12A0A43FA00D73CAF /* Home */,
@@ -206,6 +217,31 @@
 				F8E8E9E48D212A23D76E7D2F /* Pods_ARSiteGuideTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6343FF32A0A90D4002E2EC6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B6343FF42A0A90E3002E2EC6 /* SCNScene+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B6343FF62A0A9420002E2EC6 /* 3D Models */ = {
+			isa = PBXGroup;
+			children = (
+				B6343FFB2A0A95FF002E2EC6 /* retroTV.usdz */,
+				B6343FF72A0A943F002E2EC6 /* wheelBarrow.usdz */,
+			);
+			path = "3D Models";
+			sourceTree = "<group>";
+		};
+		B6343FFD2A0A9640002E2EC6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B6343FFE2A0A9660002E2EC6 /* Asset3D.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,7 +354,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6778A47E2A0A415F00D73CAF /* Preview Assets.xcassets in Resources */,
+				B6343FFC2A0A95FF002E2EC6 /* retroTV.usdz in Resources */,
 				B62C6A032A0A831E008EB196 /* 3DAssets.scnassets in Resources */,
+				B6343FF82A0A943F002E2EC6 /* wheelBarrow.usdz in Resources */,
 				6778A47A2A0A415E00D73CAF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,11 +486,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B62C69FD2A0A4683008EB196 /* ARViewController.swift in Sources */,
+				B6343FF52A0A90E3002E2EC6 /* SCNScene+Extension.swift in Sources */,
 				6778A4A32A0A441F00D73CAF /* LoginView.swift in Sources */,
 				676922DD2A0A49EF00A1E657 /* SplashView.swift in Sources */,
 				6778A4782A0A415D00D73CAF /* ContentView.swift in Sources */,
 				B62C6A012A0A4708008EB196 /* WrapperView.swift in Sources */,
 				6778A4762A0A415D00D73CAF /* ARSiteGuideApp.swift in Sources */,
+				B6343FFF2A0A9660002E2EC6 /* Asset3D.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
