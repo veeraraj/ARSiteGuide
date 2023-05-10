@@ -17,6 +17,8 @@ class ARViewController: UIViewController {
     // MARK: Properties
     private lazy var trackingConfiguration: ARWorldTrackingConfiguration = makeTrackingConfiguration()
 
+    private var infoPopupPlaneNode: SCNNode?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,28 +42,24 @@ class ARViewController: UIViewController {
 extension ARViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         guard let objectAnchor = anchor as? ARObjectAnchor else { return nil }
-
         let node = SCNNode()
-        let plane = SCNPlane(
-            width: CGFloat(objectAnchor.referenceObject.extent.x * 2),
-            height: CGFloat(objectAnchor.referenceObject.extent.y * 2)
-        )
 
-        plane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0.0)
-
-        let planeNode = SCNNode(geometry: plane)
-        planeNode.eulerAngles.x = -.pi / 15
-
-        guard let node = getNode(for: objectAnchor) else {
-            print("failed to get node for anchor \(objectAnchor.name ?? "unknown")")
-            return nil
+        if let objectPlaneNode = getObjectPlane(for: objectAnchor) {
+            node.addChildNode(objectPlaneNode)
         }
+        let infoPopupNode = getInfoPopupNode(for: objectAnchor)
 
-        node.position = SCNVector3Zero
-        planeNode.addChildNode(node)
-        node.addChildNode(planeNode)
+        node.addChildNode(infoPopupNode)
 
         return node
+    }
+}
+
+extension ARViewController: ARSessionDelegate {
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        guard let infoPopupPlaneNode else { return }
+
+        infoPopupPlaneNode.eulerAngles.y = frame.camera.eulerAngles.y
     }
 }
 
@@ -76,12 +74,33 @@ private extension ARViewController {
 
 // MARK: Private helper methods
 private extension ARViewController {
-    func getNode(for anchor: ARObjectAnchor) -> SCNNode? {
+    func getObjectPlane(for anchor: ARObjectAnchor) -> SCNNode? {
+        guard let objectNode = getObjectNode(for: anchor) else {
+            print("failed to get node for anchor \(anchor.name ?? "unknown")")
+            return nil
+        }
+        let plane = SCNPlane(
+            width: CGFloat(anchor.referenceObject.extent.x * 2),
+            height: CGFloat(anchor.referenceObject.extent.y * 2)
+        )
+        let planeNode = SCNNode(geometry: plane)
+
+        plane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0.0)
+        planeNode.eulerAngles.x = -.pi / 15
+        planeNode.addChildNode(objectNode)
+
+        return planeNode
+    }
+
+    func getObjectNode(for anchor: ARObjectAnchor) -> SCNNode? {
         guard let asset = getAsset(for: anchor),
               let scene = SCNScene(asset: asset) else {
             return nil
         }
-        return scene.rootNode.childNodes.first
+        let node = scene.rootNode.childNodes.first
+        node?.position = SCNVector3Zero
+
+        return node
     }
 
     func getAsset(for anchor: ARObjectAnchor) -> Asset3D? {
@@ -93,6 +112,40 @@ private extension ARViewController {
         default:
             return nil
         }
+    }
+
+    func getInfoPopupNode(for anchor: ARObjectAnchor) -> SCNNode {
+        let infoPopupPlane = getInfoPopupPlane()
+        let infoPopupPlaneNode = SCNNode(geometry: infoPopupPlane)
+        let node = SCNNode()
+
+        infoPopupPlaneNode.position = SCNVector3Make(
+            anchor.referenceObject.center.x,
+            anchor.referenceObject.center.y + 0.12,
+            anchor.referenceObject.center.z
+        )
+        infoPopupPlaneNode.eulerAngles.y = sceneView.session.currentFrame?.camera.eulerAngles.z ?? 0
+        self.infoPopupPlaneNode = infoPopupPlaneNode
+        node.addChildNode(infoPopupPlaneNode)
+
+        return node
+    }
+
+    func getInfoPopupPlane() -> SCNPlane {
+        let infoPopupPlane = SCNPlane(
+            width: 0.2,
+            height: 0.1
+        )
+        let infoPopupScene = SKScene(fileNamed: "InfoPopup")
+
+        infoPopupPlane.cornerRadius = infoPopupPlane.width / 10
+        infoPopupPlane.firstMaterial?.diffuse.contents = infoPopupScene
+        infoPopupPlane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(
+            SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0
+        )
+        infoPopupPlane.firstMaterial?.isDoubleSided = true
+
+        return infoPopupPlane
     }
 }
 
@@ -106,6 +159,7 @@ private extension ARViewController {
 
         sceneView.delegate = self
         sceneView.scene = scene
+        sceneView.session.delegate = self
 
         return sceneView
     }

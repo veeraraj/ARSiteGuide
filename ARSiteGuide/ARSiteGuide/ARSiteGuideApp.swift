@@ -11,7 +11,8 @@ import SwiftUI
 struct ARSiteGuideApp: App {
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            WrapperView()
+                .ignoresSafeArea()
         }
     }
 }
