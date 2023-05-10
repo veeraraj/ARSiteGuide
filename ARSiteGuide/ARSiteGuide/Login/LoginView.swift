@@ -27,7 +27,7 @@ struct LoginView: View {
                     Spacer()
                     Image("WKLogo")
                         .resizable()
-                        .frame(maxWidth: 200, maxHeight: 200)
+                        .frame(width: 200, height: 200)
                     Spacer()
                 }
                 .padding(.top, 96)
