@@ -116,8 +116,19 @@ private extension ARViewController {
         }
     }
 
+    func getEquipment(for anchor: ARObjectAnchor) -> Equipment? {
+        switch anchor.name {
+        case "RedPipe":
+            return .redPipe
+        case "BlueTank":
+            return .blueTank
+        default:
+            return nil
+        }
+    }
+
     func getInfoPopupNode(for anchor: ARObjectAnchor) -> SCNNode {
-        let infoPopupPlane = getInfoPopupPlane()
+        let infoPopupPlane = getInfoPopupPlane(for: .blueTank)
         let infoPopupPlaneNode = SCNNode(geometry: infoPopupPlane)
         let node = SCNNode()
 
@@ -133,12 +144,14 @@ private extension ARViewController {
         return node
     }
 
-    func getInfoPopupPlane() -> SCNPlane {
+    func getInfoPopupPlane(for equipment: Equipment) -> SCNPlane {
         let infoPopupPlane = SCNPlane(
             width: 0.2,
             height: 0.1
         )
-        let infoPopupScene = SKScene(fileNamed: "InfoPopup")
+        let infoPopupScene = InfoPopup(fileNamed: "InfoPopup")
+
+        infoPopupScene?.update(with: getInfoViewModel(for: equipment))
 
         infoPopupPlane.cornerRadius = infoPopupPlane.width / 10
         infoPopupPlane.firstMaterial?.diffuse.contents = infoPopupScene
@@ -148,6 +161,27 @@ private extension ARViewController {
         infoPopupPlane.firstMaterial?.isDoubleSided = true
 
         return infoPopupPlane
+    }
+
+    func getInfoViewModel(for equipment: Equipment) -> InfoPopup.ViewModel {
+        let name: String
+        let instructions: String
+        let imageName: String
+        switch equipment {
+        case .blueTank:
+            name = "Blue tank"
+            instructions = "Fill this up with gas"
+            imageName = "blueTankPreview"
+        case .redPipe:
+            name = "Red pipe"
+            instructions = "Use these pipes to control the flow of water from the tank going"
+            imageName = "redPipePreview"
+        }
+        return .init(
+            name: name,
+            instructions: instructions,
+            imageName: imageName
+        )
     }
 }
 

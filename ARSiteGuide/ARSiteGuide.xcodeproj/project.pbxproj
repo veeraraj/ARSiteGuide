@@ -30,6 +30,8 @@
 		B6343FFC2A0A95FF002E2EC6 /* retroTV.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B6343FFB2A0A95FF002E2EC6 /* retroTV.usdz */; };
 		B6343FFF2A0A9660002E2EC6 /* Asset3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6343FFE2A0A9660002E2EC6 /* Asset3D.swift */; };
 		B63440032A0B7BDC002E2EC6 /* InfoPopup.sks in Resources */ = {isa = PBXBuildFile; fileRef = B63440022A0B7BDC002E2EC6 /* InfoPopup.sks */; };
+		B63440052A0BA0C8002E2EC6 /* InfoPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63440042A0BA0C8002E2EC6 /* InfoPopup.swift */; };
+		B6E58A3A2A0BC37600125F5C /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E58A392A0BC37600125F5C /* Equipment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		B6343FFB2A0A95FF002E2EC6 /* retroTV.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = retroTV.usdz; sourceTree = "<group>"; };
 		B6343FFE2A0A9660002E2EC6 /* Asset3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset3D.swift; sourceTree = "<group>"; };
 		B63440022A0B7BDC002E2EC6 /* InfoPopup.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InfoPopup.sks; sourceTree = "<group>"; };
+		B63440042A0BA0C8002E2EC6 /* InfoPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopup.swift; sourceTree = "<group>"; };
+		B6E58A392A0BC37600125F5C /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		D3702AB2593786E8995165BB /* Pods-ARSiteGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSiteGuide.debug.xcconfig"; path = "Target Support Files/Pods-ARSiteGuide/Pods-ARSiteGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		E5F5B179C77CC06FF863C54A /* Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig"; path = "Target Support Files/Pods-ARSiteGuide-ARSiteGuideUITests/Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F8E8E9E48D212A23D76E7D2F /* Pods_ARSiteGuideTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARSiteGuideTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +166,7 @@
 				B62C69FC2A0A4683008EB196 /* ARViewController.swift */,
 				B62C6A002A0A4708008EB196 /* WrapperView.swift */,
 				B63440022A0B7BDC002E2EC6 /* InfoPopup.sks */,
+				B63440042A0BA0C8002E2EC6 /* InfoPopup.swift */,
 			);
 			path = ARSiteGuide;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				B6343FFE2A0A9660002E2EC6 /* Asset3D.swift */,
+				B6E58A392A0BC37600125F5C /* Equipment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -512,10 +518,12 @@
 				676922E32A0A569900A1E657 /* HomeView.swift in Sources */,
 				676922DD2A0A49EF00A1E657 /* SplashView.swift in Sources */,
 				676922E82A0A8F2900A1E657 /* LoginViewModel.swift in Sources */,
+				B6E58A3A2A0BC37600125F5C /* Equipment.swift in Sources */,
 				6778A4782A0A415D00D73CAF /* ContentView.swift in Sources */,
 				B62C6A012A0A4708008EB196 /* WrapperView.swift in Sources */,
 				6778A4762A0A415D00D73CAF /* ARSiteGuideApp.swift in Sources */,
 				B6343FFF2A0A9660002E2EC6 /* Asset3D.swift in Sources */,
+				B63440052A0BA0C8002E2EC6 /* InfoPopup.swift in Sources */,
 				676922E62A0A7E7D00A1E657 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -695,7 +703,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.veera.ARSiteGuide;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zacharyg.ARSiteGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
@@ -739,7 +747,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.veera.ARSiteGuide;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zacharyg.ARSiteGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
