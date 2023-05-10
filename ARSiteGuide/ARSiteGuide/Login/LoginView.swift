@@ -59,9 +59,9 @@ struct LoginView: View {
                 NavigationLink(destination: HomeView(user: user), isActive: $isValidUser) {
                     Button(action: {
                         let user = viewModel.userDetails(userName: name, password: password)
-                        self.isValidUser = user.isValidUser
-                        self.showAlert = !user.isValidUser
-                        self.user = user.userDetails
+                        self.isValidUser = user != nil
+                        self.showAlert = user == nil
+                        self.user = user
                     }) {
                         Text("Sign In")
                             .font(.title2)

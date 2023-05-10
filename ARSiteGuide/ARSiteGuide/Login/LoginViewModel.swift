@@ -9,9 +9,7 @@ import Foundation
 import Combine
 
 final class LoginViewModel: ObservableObject {
-    func userDetails(userName: String, password: String) -> (isValidUser: Bool, userDetails: User?) {
-        let isValidUser = User.allCases.contains(where: { $0.rawValue == userName.lowercased() })
-        let user = User(rawValue: userName.lowercased())
-        return (isValidUser, user)
+    func userDetails(userName: String, password: String) -> User? {
+        User(rawValue: userName.lowercased())
     }
 }
