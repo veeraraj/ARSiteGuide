@@ -31,7 +31,7 @@ struct HomeView: View {
                                     .frame(width: 16,
                                            height: 16)
                             }
-                            Text(task)
+                            Text(task.id)
                             Spacer()
                             Image(systemName: "arrow.right.circle")
                                 .font(.system(size: 16, weight: .light))
