@@ -173,7 +173,8 @@ private extension ARViewController {
             inGroupNamed: "PipeObjects",
             bundle: Bundle.main
         ) else {
-            fatalError("failed to create AR reference objects")
+          //  fatalError("failed to create AR reference objects")
+            return configuration
         }
 
         configuration.detectionObjects = arReferenceObjects
