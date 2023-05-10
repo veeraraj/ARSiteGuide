@@ -17,7 +17,7 @@ class ARViewController: UIViewController {
     // MARK: Properties
     private lazy var trackingConfiguration: ARWorldTrackingConfiguration = makeTrackingConfiguration()
 
-    private var infoPopupPlaneNode: SCNNode?
+    private var infoPopupNodes: [SCNNode] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +57,11 @@ extension ARViewController: ARSCNViewDelegate {
 
 extension ARViewController: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        guard let infoPopupPlaneNode else { return }
+        guard !infoPopupNodes.isEmpty else { return }
 
-        infoPopupPlaneNode.eulerAngles.y = frame.camera.eulerAngles.y
+        infoPopupNodes.forEach { infoPopupNode in
+            infoPopupNode.eulerAngles.y = frame.camera.eulerAngles.y
+        }
     }
 }
 
@@ -124,8 +126,8 @@ private extension ARViewController {
             anchor.referenceObject.center.y + 0.12,
             anchor.referenceObject.center.z
         )
-        infoPopupPlaneNode.eulerAngles.y = sceneView.session.currentFrame?.camera.eulerAngles.z ?? 0
-        self.infoPopupPlaneNode = infoPopupPlaneNode
+        infoPopupPlaneNode.eulerAngles.y = sceneView.session.currentFrame?.camera.eulerAngles.y ?? 0
+        infoPopupNodes.append(infoPopupPlaneNode)
         node.addChildNode(infoPopupPlaneNode)
 
         return node
