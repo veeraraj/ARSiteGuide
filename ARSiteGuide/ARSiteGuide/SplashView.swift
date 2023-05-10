@@ -14,7 +14,7 @@ struct SplashView: View {
     var body: some View {
         VStack {
             if isSplashDone {
-                LoginView()
+                LoginView(viewModel: LoginViewModel())
             } else {
                 Image("WKLogo")
                     .resizable()
@@ -31,7 +31,7 @@ struct SplashView: View {
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 withAnimation {
                     self.isSplashDone = true
                 }
