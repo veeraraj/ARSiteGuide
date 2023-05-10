@@ -13,11 +13,24 @@ class ARViewController: UIViewController {
 
     // MARK: Views
     private lazy var sceneView: ARSCNView = makeSceneView()
+    private lazy var submitButton: UIButton = makeSubmitButton()
 
     // MARK: Properties
     private lazy var trackingConfiguration: ARWorldTrackingConfiguration = makeTrackingConfiguration()
 
     private var infoPopupNodes: [SCNNode] = []
+
+    private let dismiss: () -> Void
+
+    init(dismiss: @escaping (() -> Void)) {
+        self.dismiss = dismiss
+
+        super.init(nibName: nil, bundle: Bundle(for: type(of: self)))
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,8 +82,15 @@ extension ARViewController: ARSessionDelegate {
 private extension ARViewController {
     func setup() {
         view.addSubview(sceneView)
+        view.addSubview(submitButton)
 
         sceneView.easy.layout(Edges())
+        submitButton.easy.layout(
+            Bottom(10).to(view.safeAreaLayoutGuide, .bottom),
+            Left(20),
+            Right(20),
+            Height(50)
+        )
     }
 }
 
@@ -200,6 +220,16 @@ private extension ARViewController {
         return sceneView
     }
 
+    func makeSubmitButton() -> UIButton {
+        var filled = UIButton.Configuration.filled()
+        filled.title = "Mark as completed"
+        filled.buttonSize = .large
+
+        let button = UIButton(configuration: filled, primaryAction: nil)
+        button.addTarget(self, action: #selector(didTapSubmit), for: .touchUpInside)
+        return button
+    }
+
     func makeTrackingConfiguration() -> ARWorldTrackingConfiguration {
         let configuration = ARWorldTrackingConfiguration()
 
@@ -209,9 +239,14 @@ private extension ARViewController {
         ) else {
             fatalError("failed to create AR reference objects")
         }
-
         configuration.detectionObjects = arReferenceObjects
 
         return configuration
+    }
+}
+
+@objc private extension ARViewController {
+    func didTapSubmit() {
+        dismiss()
     }
 }

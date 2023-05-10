@@ -7,12 +7,15 @@
 
 import SwiftUI
 
-struct WrapperView : UIViewControllerRepresentable {
+struct WrapperView: UIViewControllerRepresentable {
+    @Environment(\.presentationMode) var presentationMode
 
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) { }
 
     func makeUIViewController(context: Context) -> some UIViewController {
-        return ARViewController()
+        return ARViewController(dismiss: {
+            presentationMode.wrappedValue.dismiss()
+        })
     }
 }
 

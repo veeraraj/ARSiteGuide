@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
-    var user: User?
+    var user: User? = .user1
 
     var body: some View {
         NavigationView {
             VStack {
                 List(user?.taskList ?? [], id: \.self) { task in
-                    NavigationLink(destination: LoginView(viewModel: LoginViewModel())) { Text(task).padding()
+                    NavigationLink(
+                        destination: WrapperView()
+                            .ignoresSafeArea()
+                    ) {
+                        Text(task)
+                            .padding()
                     }
                 }
             }
