@@ -15,9 +15,9 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(user?.taskList ?? [], id: \.self) { task in
+                List(user?.instructionList ?? [], id: \.self) { instruction in
                     NavigationLink(
-                        destination: WrapperView()
+                        destination: WrapperView(instruction: instruction)
                             .ignoresSafeArea()
                     ) {
                         HStack {
@@ -31,7 +31,7 @@ struct HomeView: View {
                                     .frame(width: 16,
                                            height: 16)
                             }
-                            Text(task.id)
+                            Text(instruction.id)
                             Spacer()
                             Image(systemName: "arrow.right.circle")
                                 .font(.system(size: 16, weight: .light))

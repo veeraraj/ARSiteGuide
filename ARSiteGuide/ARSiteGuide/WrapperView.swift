@@ -10,18 +10,13 @@ import SwiftUI
 struct WrapperView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
 
+    let instruction: Instruction
+
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) { }
 
     func makeUIViewController(context: Context) -> some UIViewController {
         return ARViewController(dismiss: {
             presentationMode.wrappedValue.dismiss()
-        })
-    }
-}
-
-struct WrapperView_Previews: PreviewProvider {
-    static var previews: some View {
-        WrapperView()
-            .ignoresSafeArea()
+        }, instruction: instruction)
     }
 }

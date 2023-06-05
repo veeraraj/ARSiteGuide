@@ -32,6 +32,7 @@
 		B63440032A0B7BDC002E2EC6 /* InfoPopup.sks in Resources */ = {isa = PBXBuildFile; fileRef = B63440022A0B7BDC002E2EC6 /* InfoPopup.sks */; };
 		B63440052A0BA0C8002E2EC6 /* InfoPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63440042A0BA0C8002E2EC6 /* InfoPopup.swift */; };
 		B6E58A3A2A0BC37600125F5C /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E58A392A0BC37600125F5C /* Equipment.swift */; };
+		B6E58A3C2A0BE05D00125F5C /* blueTank.usdz in Resources */ = {isa = PBXBuildFile; fileRef = B6E58A3B2A0BE05D00125F5C /* blueTank.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		B63440022A0B7BDC002E2EC6 /* InfoPopup.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InfoPopup.sks; sourceTree = "<group>"; };
 		B63440042A0BA0C8002E2EC6 /* InfoPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopup.swift; sourceTree = "<group>"; };
 		B6E58A392A0BC37600125F5C /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
+		B6E58A3B2A0BE05D00125F5C /* blueTank.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = blueTank.usdz; sourceTree = "<group>"; };
 		D3702AB2593786E8995165BB /* Pods-ARSiteGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSiteGuide.debug.xcconfig"; path = "Target Support Files/Pods-ARSiteGuide/Pods-ARSiteGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		E5F5B179C77CC06FF863C54A /* Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig"; path = "Target Support Files/Pods-ARSiteGuide-ARSiteGuideUITests/Pods-ARSiteGuide-ARSiteGuideUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F8E8E9E48D212A23D76E7D2F /* Pods_ARSiteGuideTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARSiteGuideTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,7 @@
 		B6343FF62A0A9420002E2EC6 /* 3D Models */ = {
 			isa = PBXGroup;
 			children = (
+				B6E58A3B2A0BE05D00125F5C /* blueTank.usdz */,
 				B6343FFB2A0A95FF002E2EC6 /* retroTV.usdz */,
 				B6343FF72A0A943F002E2EC6 /* wheelBarrow.usdz */,
 			);
@@ -384,6 +387,7 @@
 				B6343FFC2A0A95FF002E2EC6 /* retroTV.usdz in Resources */,
 				B62C6A032A0A831E008EB196 /* 3DAssets.scnassets in Resources */,
 				B6343FF82A0A943F002E2EC6 /* wheelBarrow.usdz in Resources */,
+				B6E58A3C2A0BE05D00125F5C /* blueTank.usdz in Resources */,
 				6778A47A2A0A415E00D73CAF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

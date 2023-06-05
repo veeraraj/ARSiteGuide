@@ -10,4 +10,5 @@ import Foundation
 enum Asset3D: String {
     case retroTV
     case wheelBarrow
+    case blueTank
 }

@@ -12,55 +12,80 @@ enum User: String, CaseIterable {
     case user1
     case user2
 
-    var taskList: [Task] {
+    var instructionList: [Instruction] {
         switch self {
         case .user1:
             return [
-                Task(
-                    id: "Task 1",
-                    equipment: .blueTank,
-                    instructions: "Fill this up with gas"
-                ),
-                Task(
-                    id: "Task 2",
-                    equipment: .redPipe,
-                    instructions: "Use these pipes to control the flow of water coming from the tank"
-                )
+                Instruction(id: "Task 1", tasks: [
+                    Task(
+                        equipment: .blueTank,
+                        instructions: "Fill this up with gas"
+                    ),
+                    Task(
+                        equipment: .redPipe,
+                        instructions: "Close the valve"
+                    )
+                ]),
+                Instruction(id: "Task 2", tasks: [
+                    Task(
+                        equipment: .redPipe,
+                        instructions: "Close the valve"
+                    )
+                ]),
+                Instruction(id: "Task 3", tasks: [
+                    Task(
+                        equipment: .blueTank,
+                        instructions: "Fill this up with gas"
+                    )
+                ])
             ]
         case .user2:
             return [
-                Task(
-                    id: "Task 1",
-                    equipment: .blueTank,
-                    instructions: "Fill this up with gas"
-                ),
-                Task(
-                    id: "Task 2",
-                    equipment: .redPipe,
-                    instructions: "Use these pipes to control the flow of water coming from the tank"
-                ),
-                Task(
-                    id: "Task 3",
-                    equipment: .blueTank,
-                    instructions: "Fill this up with gas"
-                ),
-                Task(
-                    id: "Task 4",
-                    equipment: .redPipe,
-                    instructions: "Use these pipes to control the flow of water coming from the tank"
-                ),
-                Task(
-                    id: "Task 5",
-                    equipment: .redPipe,
-                    instructions: "Use these pipes to control the flow of water coming from the tank"
-                )
+                Instruction(id: "Task 1", tasks: [
+                    Task(
+                        equipment: .blueTank,
+                        instructions: "Fill this up with gas"
+                    ),
+                    Task(
+                        equipment: .redPipe,
+                        instructions: "Close the valve"
+                    )
+                ]),
+                Instruction(id: "Task 2", tasks: [
+                    Task(
+                        equipment: .redPipe,
+                        instructions: "Close the valve"
+                    )
+                ]),
+                Instruction(id: "Task 3", tasks: [
+                    Task(
+                        equipment: .blueTank,
+                        instructions: "Fill this up with gas"
+                    )
+                ]),
+                Instruction(id: "Task 4", tasks: [
+                    Task(
+                        equipment: .redPipe,
+                        instructions: "Close the valve"
+                    )
+                ]),
+                Instruction(id: "Task 5", tasks: [
+                    Task(
+                        equipment: .blueTank,
+                        instructions: "Fill this up with gas"
+                    )
+                ])
             ]
         }
     }
 }
 
-struct Task: Equatable, Hashable {
+struct Instruction: Equatable, Hashable {
     let id: String
+    let tasks: [Task]
+}
+
+struct Task: Equatable, Hashable {
     let equipment: Equipment
     let instructions: String
 }
