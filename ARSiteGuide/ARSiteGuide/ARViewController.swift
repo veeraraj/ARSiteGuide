@@ -21,9 +21,11 @@ class ARViewController: UIViewController {
     private var infoPopupNodes: [SCNNode] = []
 
     private let dismiss: () -> Void
+    private let instruction: Instruction
 
-    init(dismiss: @escaping (() -> Void)) {
+    init(dismiss: @escaping (() -> Void), instruction: Instruction) {
         self.dismiss = dismiss
+        self.instruction = instruction
 
         super.init(nibName: nil, bundle: Bundle(for: type(of: self)))
     }
@@ -57,12 +59,14 @@ extension ARViewController: ARSCNViewDelegate {
         guard let objectAnchor = anchor as? ARObjectAnchor else { return nil }
         let node = SCNNode()
 
-        if let objectPlaneNode = getObjectPlane(for: objectAnchor) {
-            node.addChildNode(objectPlaneNode)
+//        if let objectPlaneNode = getObjectPlane(for: objectAnchor) {
+//            node.addChildNode(objectPlaneNode)
+//        }
+        if let infoPopupNode = getInfoPopupNode(for: objectAnchor) {
+            node.addChildNode(infoPopupNode)
+        } else {
+            print("failed to create info popup node")
         }
-        let infoPopupNode = getInfoPopupNode(for: objectAnchor)
-
-        node.addChildNode(infoPopupNode)
 
         return node
     }
@@ -73,7 +77,7 @@ extension ARViewController: ARSessionDelegate {
         guard !infoPopupNodes.isEmpty else { return }
 
         infoPopupNodes.forEach { infoPopupNode in
-            infoPopupNode.eulerAngles.y = frame.camera.eulerAngles.y
+            infoPopupNode.eulerAngles.y = frame.camera.eulerAngles.y + (frame.camera.eulerAngles.y / 3)
         }
     }
 }
@@ -128,9 +132,9 @@ private extension ARViewController {
     func getAsset(for anchor: ARObjectAnchor) -> Asset3D? {
         switch anchor.name {
         case "RedPipe":
-            return .retroTV
+            return nil
         case "BlueTank":
-            return .wheelBarrow
+            return .blueTank
         default:
             return nil
         }
@@ -147,14 +151,18 @@ private extension ARViewController {
         }
     }
 
-    func getInfoPopupNode(for anchor: ARObjectAnchor) -> SCNNode {
-        let infoPopupPlane = getInfoPopupPlane(for: .blueTank)
+    func getInfoPopupNode(for anchor: ARObjectAnchor) -> SCNNode? {
+        guard let equipment = getEquipment(for: anchor),
+              let task = instruction.tasks.first(where: { $0.equipment == equipment }) else {
+            return nil
+        }
+        let infoPopupPlane = getInfoPopupPlane(for: task, anchor: anchor)
         let infoPopupPlaneNode = SCNNode(geometry: infoPopupPlane)
         let node = SCNNode()
 
         infoPopupPlaneNode.position = SCNVector3Make(
             anchor.referenceObject.center.x,
-            anchor.referenceObject.center.y + 0.12,
+            anchor.referenceObject.center.y + 0.5,
             anchor.referenceObject.center.z
         )
         infoPopupPlaneNode.eulerAngles.y = sceneView.session.currentFrame?.camera.eulerAngles.y ?? 0
@@ -164,14 +172,15 @@ private extension ARViewController {
         return node
     }
 
-    func getInfoPopupPlane(for equipment: Equipment) -> SCNPlane {
+    func getInfoPopupPlane(for task: Task, anchor: ARObjectAnchor) -> SCNPlane {
+        let width = CGFloat(anchor.referenceObject.extent.x) / 2
         let infoPopupPlane = SCNPlane(
-            width: 0.2,
-            height: 0.1
+            width: width,
+            height: width / 2
         )
         let infoPopupScene = InfoPopup(fileNamed: "InfoPopup")
 
-        infoPopupScene?.update(with: getInfoViewModel(for: equipment))
+        infoPopupScene?.update(with: getInfoViewModel(for: task))
 
         infoPopupPlane.cornerRadius = infoPopupPlane.width / 10
         infoPopupPlane.firstMaterial?.diffuse.contents = infoPopupScene
@@ -183,23 +192,20 @@ private extension ARViewController {
         return infoPopupPlane
     }
 
-    func getInfoViewModel(for equipment: Equipment) -> InfoPopup.ViewModel {
+    func getInfoViewModel(for task: Task) -> InfoPopup.ViewModel {
         let name: String
-        let instructions: String
         let imageName: String
-        switch equipment {
+        switch task.equipment {
         case .blueTank:
             name = "Blue tank"
-            instructions = "Fill this up with gas"
             imageName = "blueTankPreview"
         case .redPipe:
             name = "Red pipe"
-            instructions = "Use these pipes to control the flow of water from the tank going"
             imageName = "redPipePreview"
         }
         return .init(
             name: name,
-            instructions: instructions,
+            instructions: task.instructions,
             imageName: imageName
         )
     }
